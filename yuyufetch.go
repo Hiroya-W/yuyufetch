@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 const (
@@ -33,6 +34,10 @@ func Main(args []string) int {
 }
 
 func (cli *CLI) Run(args []string) error {
-    fmt.Println("yuyufetch")
+    lines := strings.Split(yuyu_logo, "\n")
+
+    for _, line := range lines {
+        fmt.Fprintf(cli.Stdout, "%s\n", line)
+    }
     return nil
 }
