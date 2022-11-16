@@ -2,6 +2,12 @@
 
 A command-line my information tool
 
+## How to install yuyufetch
+
+```bash
+go install github.com/Hiroya-W/yuyufetch/cmd/yuyufetch@latest
+```
+
 ## How to build yuyufetch
 
 `yuyufetch` can be compiled with the following command.
