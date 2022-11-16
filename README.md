@@ -1,8 +1,10 @@
 # yuyufetch
 
-A command-line self-introduction tool
+A command-line self-introduction tool.
 
 ![image](https://user-images.githubusercontent.com/43127622/202208641-bae0179c-f681-4aff-bd52-f093feb5bcde.png)
+
+Inspired by [Neofetch](https://github.com/dylanaraps/neofetch), [perufetch](https://github.com/TadaTeruki/perufetch).
 
 ## How to install yuyufetch
 
