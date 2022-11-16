@@ -1,7 +1,6 @@
 NAME := yuyufetch
-VERSION := $(gobump show -r)
-REVISION := $(shell git rev-parse --short HEAD)
-LDFLAGS := "-X main.revision=$(REVISION)"
+VERSION := $(shell git describe --tags)
+LDFLAGS := "-X github.com/Hiroya-W/yuyufetch.version=$(VERSION)"
 
 ## build binaries
 bin/%: cmd/%/main.go
