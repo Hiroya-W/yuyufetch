@@ -2,6 +2,8 @@
 
 A command-line self-introduction tool
 
+![image](https://user-images.githubusercontent.com/43127622/202208641-bae0179c-f681-4aff-bd52-f093feb5bcde.png)
+
 ## How to install yuyufetch
 
 ```bash
