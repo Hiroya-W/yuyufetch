@@ -10,3 +10,8 @@ bin/%: cmd/%/main.go
 ## build binary
 .PHONY: build
 build: bin/$(NAME)
+
+## clean
+.PHONY: clean
+clean:
+	rm ./bin/$(NAME)
