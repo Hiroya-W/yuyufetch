@@ -1,6 +1,6 @@
 # yuyufetch
 
-A command-line my information tool
+A command-line self-introduction tool
 
 ## How to install yuyufetch
 
