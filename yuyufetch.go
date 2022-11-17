@@ -35,27 +35,27 @@ func Main(args []string) int {
 }
 
 func (cli *CLI) Run(args []string) error {
-    var showVersion bool
-    fs := flag.NewFlagSet(args[0], flag.ContinueOnError)
-    fs.BoolVar(&showVersion, "v", false, "show version")
-    fs.BoolVar(&showVersion, "version", false, "show version")
-    fs.SetOutput(cli.Stderr)
+	var showVersion bool
+	fs := flag.NewFlagSet(args[0], flag.ContinueOnError)
+	fs.BoolVar(&showVersion, "v", false, "show version")
+	fs.BoolVar(&showVersion, "version", false, "show version")
+	fs.SetOutput(cli.Stderr)
 	fs.Usage = func() {
-        fmt.Printf("yuyufetch %s\n\n", version)
-        fmt.Printf("Usage:\n  %s [Options]\n\n", "yuyufetch")
-        fmt.Println("Options:")
+		fmt.Printf("yuyufetch %s\n\n", version)
+		fmt.Printf("Usage:\n  %s [Options]\n\n", "yuyufetch")
+		fmt.Println("Options:")
 		fs.PrintDefaults()
-        fmt.Println("")
+		fmt.Println("")
 	}
 
-    if err := fs.Parse(args[1:]); err != nil {
+	if err := fs.Parse(args[1:]); err != nil {
 		return err
 	}
 
-    if showVersion {
-        fmt.Fprintln(cli.Stdout, "yuyufetch", version)
-        return nil
-    }
+	if showVersion {
+		fmt.Fprintln(cli.Stdout, "yuyufetch", version)
+		return nil
+	}
 
 	logo_lines := strings.Split(Yuyu_logo, "\n")
 	yuyu_info := YuyuInfo.GetStyledContents()

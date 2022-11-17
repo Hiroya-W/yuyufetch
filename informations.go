@@ -26,88 +26,90 @@ const Yuyu_logo = `[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;25
 [0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;255;255;255mM[0m[38;2;106;143;198mM[0m[38;2;64;111;182mc[0m[38;2;64;111;182mc[0m[38;2;63;107;176mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;62;104;172mM[0m[38;2;70;108;169mM[0m[38;2;202;179;89mM[0m[38;2;216;187;76mM[0m[38;2;80;114;161mc[0m
 `
 
-var TermColorDark = "\x1b[30m███\x1b[31m███\x1b[32m███\x1b[33m███\x1b[34m███\x1b[35m███\x1b[36m███\x1b[37m███"
-var TermColorLight = "\x1b[90m███\x1b[91m███\x1b[92m███\x1b[93m███\x1b[94m███\x1b[95m███\x1b[96m███\x1b[97m███"
+var (
+	TermColorDark  = "\x1b[30m███\x1b[31m███\x1b[32m███\x1b[33m███\x1b[34m███\x1b[35m███\x1b[36m███\x1b[37m███"
+	TermColorLight = "\x1b[90m███\x1b[91m███\x1b[92m███\x1b[93m███\x1b[94m███\x1b[95m███\x1b[96m███\x1b[97m███"
+)
 
 type Person struct {
-    firstName string
-    lastName string
-    birthday time.Time
-    affiliation string
+	firstName   string
+	lastName    string
+	birthday    time.Time
+	affiliation string
 }
 
 type Address struct {
-    country string
-    states string
+	country string
+	states  string
 }
 
 type Information struct {
-    person Person
-    address Address
-    shell string
-    Twitter string
-    GitHub string
-    programming []string
-    major []string
+	person      Person
+	address     Address
+	shell       string
+	Twitter     string
+	GitHub      string
+	programming []string
+	major       []string
 }
 
 func (info *Information) GetStyledContents() []string {
-    title := fmt.Sprintf("%s@%s", info.person.firstName, strings.Join(strings.Split(info.person.affiliation, " "), "-"))
-    styled_title := fmt.Sprintf("\x1b[1;32m%s\x1b[0m", title)
-    underline := strings.Repeat("-", len(title))
+	title := fmt.Sprintf("%s@%s", info.person.firstName, strings.Join(strings.Split(info.person.affiliation, " "), "-"))
+	styled_title := fmt.Sprintf("\x1b[1;32m%s\x1b[0m", title)
+	underline := strings.Repeat("-", len(title))
 
-    name := fmt.Sprintf("\x1b[1;33mName\x1b[0m: %s %s", info.person.firstName, info.person.lastName) 
+	name := fmt.Sprintf("\x1b[1;33mName\x1b[0m: %s %s", info.person.firstName, info.person.lastName)
 
-    uptime := fmt.Sprintf("\x1b[1;33mUptime\x1b[0m: %s", time.Now().Sub(info.person.birthday).Round(time.Second))
-    
-    location := fmt.Sprintf("\x1b[1;33mLocation\x1b[0m: %s, %s", info.address.states, info.address.country)
+	uptime := fmt.Sprintf("\x1b[1;33mUptime\x1b[0m: %s", time.Now().Sub(info.person.birthday).Round(time.Second))
 
-    affiliation := fmt.Sprintf("\x1b[1;33mAffiliation\x1b[0m: %s", info.person.affiliation)
+	location := fmt.Sprintf("\x1b[1;33mLocation\x1b[0m: %s, %s", info.address.states, info.address.country)
 
-    shell := fmt.Sprintf("\x1b[1;33mShell\x1b[0m: %s", info.shell)
+	affiliation := fmt.Sprintf("\x1b[1;33mAffiliation\x1b[0m: %s", info.person.affiliation)
 
-    Twitter := fmt.Sprintf("\x1b[1;33mTwitter\x1b[0m: %s", info.Twitter)
-    GitHub := fmt.Sprintf("\x1b[1;33mGitHub\x1b[0m: %s", info.GitHub)
+	shell := fmt.Sprintf("\x1b[1;33mShell\x1b[0m: %s", info.shell)
 
-    programming := strings.Join(info.programming, ", ")
-    styled_programming := fmt.Sprintf("\x1b[1;33mProgramming\x1b[0m: %s", programming)
+	Twitter := fmt.Sprintf("\x1b[1;33mTwitter\x1b[0m: %s", info.Twitter)
+	GitHub := fmt.Sprintf("\x1b[1;33mGitHub\x1b[0m: %s", info.GitHub)
 
-    major := strings.Join(info.major, " ")
+	programming := strings.Join(info.programming, ", ")
+	styled_programming := fmt.Sprintf("\x1b[1;33mProgramming\x1b[0m: %s", programming)
 
-    styled_major := fmt.Sprintf("\x1b[1;33mField\x1b[0m: %s", major)
+	major := strings.Join(info.major, " ")
 
-    return []string{
-        styled_title,
-        underline,
-        name,
-        shell,
-        uptime,
-        location,
-        affiliation,
-        Twitter,
-        GitHub,
-        styled_programming,
-        styled_major,
-        "",
-        TermColorDark,
-        TermColorLight,
-    }
+	styled_major := fmt.Sprintf("\x1b[1;33mField\x1b[0m: %s", major)
+
+	return []string{
+		styled_title,
+		underline,
+		name,
+		shell,
+		uptime,
+		location,
+		affiliation,
+		Twitter,
+		GitHub,
+		styled_programming,
+		styled_major,
+		"",
+		TermColorDark,
+		TermColorLight,
+	}
 }
 
 var YuyuInfo = Information{
-    person: Person{
-        firstName: "Hiroya",
-        lastName: "Watanabe",
-        birthday: time.Date(2000, 2, 24, 0, 0, 0, 0, time.Local),
-        affiliation: "Kyoto Institute of Technology",
-    },
-    address: Address{
-        country: "Japan",
-        states: "Kyoto",
-    },
-    shell: "Japanese",
-    Twitter: "@Hyuyu_kun",
-    GitHub: "Hiroya-W",
-    programming: []string{"Python", "C++", "Go"},
-    major: []string{"Software Engineering"},
+	person: Person{
+		firstName:   "Hiroya",
+		lastName:    "Watanabe",
+		birthday:    time.Date(2000, 2, 24, 0, 0, 0, 0, time.Local),
+		affiliation: "Kyoto Institute of Technology",
+	},
+	address: Address{
+		country: "Japan",
+		states:  "Kyoto",
+	},
+	shell:       "Japanese",
+	Twitter:     "@Hyuyu_kun",
+	GitHub:      "Hiroya-W",
+	programming: []string{"Python", "C++", "Go"},
+	major:       []string{"Software Engineering"},
 }
