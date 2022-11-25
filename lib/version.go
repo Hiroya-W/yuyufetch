@@ -1,3 +1,3 @@
 package yuyufetch
 
-var version = "v0.1.0"
+var version = "v0.2.0"
