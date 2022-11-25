@@ -9,7 +9,7 @@ Inspired by [Neofetch](https://github.com/dylanaraps/neofetch), [perufetch](http
 ## How to install yuyufetch
 
 ```bash
-go install github.com/Hiroya-W/yuyufetch/cmd/yuyufetch@latest
+go install github.com/Hiroya-W/yuyufetch@latest
 ```
 
 ## How to build yuyufetch
