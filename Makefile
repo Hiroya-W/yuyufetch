@@ -1,6 +1,6 @@
 NAME := yuyufetch
 VERSION := $(shell git describe --tags)
-LDFLAGS := "-X github.com/Hiroya-W/yuyufetch.version=$(VERSION)"
+LDFLAGS := "-X github.com/Hiroya-W/yuyufetch/lib.version=$(VERSION)"
 
 ## build binaries
 bin/%: main.go
