@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/Hiroya-W/yuyufetch"
+	"github.com/Hiroya-W/yuyufetch/lib"
 )
 
 func main() {
