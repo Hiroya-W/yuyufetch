@@ -35,7 +35,8 @@ type Person struct {
 	firstName   string
 	lastName    string
 	birthday    time.Time
-	affiliation string
+	almaMater	string
+	description string
 }
 
 type Address struct {
@@ -48,35 +49,37 @@ type Information struct {
 	address     Address
 	shell       string
 	Twitter     string
+	Bluesky		string
 	GitHub      string
 	programming []string
-	major       []string
+	hobbies       []string
 }
 
 func (info *Information) GetStyledContents() []string {
-	title := fmt.Sprintf("%s@%s", info.person.firstName, strings.Join(strings.Split(info.person.affiliation, " "), "-"))
+	title := fmt.Sprintf("%s@%s", info.person.firstName, strings.Join(strings.Split(info.person.description, " "), "-"))
 	styled_title := fmt.Sprintf("\x1b[1;32m%s\x1b[0m", title)
 	underline := strings.Repeat("-", len(title))
 
 	name := fmt.Sprintf("\x1b[1;33mName\x1b[0m: %s %s", info.person.firstName, info.person.lastName)
 
-	uptime := fmt.Sprintf("\x1b[1;33mUptime\x1b[0m: %s", time.Now().Sub(info.person.birthday).Round(time.Second))
+	uptime := fmt.Sprintf("\x1b[1;33mUptime\x1b[0m: %s", time.Since(info.person.birthday).Round(time.Second))
 
 	location := fmt.Sprintf("\x1b[1;33mLocation\x1b[0m: %s, %s", info.address.states, info.address.country)
 
-	affiliation := fmt.Sprintf("\x1b[1;33mAffiliation\x1b[0m: %s", info.person.affiliation)
+	almaMater := fmt.Sprintf("\x1b[1;33mAlma Mater\x1b[0m: %s", info.person.almaMater)
 
 	shell := fmt.Sprintf("\x1b[1;33mShell\x1b[0m: %s", info.shell)
 
-	Twitter := fmt.Sprintf("\x1b[1;33mTwitter\x1b[0m: %s", info.Twitter)
+	Twitter := fmt.Sprintf("\x1b[1;33mX\x1b[0m: %s", info.Twitter)
+	Bluesky := fmt.Sprintf("\x1b[1;33mBluesky\x1b[0m: %s", info.Bluesky)
 	GitHub := fmt.Sprintf("\x1b[1;33mGitHub\x1b[0m: %s", info.GitHub)
 
 	programming := strings.Join(info.programming, ", ")
 	styled_programming := fmt.Sprintf("\x1b[1;33mProgramming\x1b[0m: %s", programming)
 
-	major := strings.Join(info.major, " ")
+	hobbies := strings.Join(info.hobbies, ", ")
 
-	styled_major := fmt.Sprintf("\x1b[1;33mField\x1b[0m: %s", major)
+	styled_hobbies := fmt.Sprintf("\x1b[1;33mHobbies\x1b[0m: %s", hobbies)
 
 	return []string{
 		styled_title,
@@ -85,11 +88,12 @@ func (info *Information) GetStyledContents() []string {
 		shell,
 		uptime,
 		location,
-		affiliation,
+		almaMater,
 		Twitter,
+		Bluesky,
 		GitHub,
 		styled_programming,
-		styled_major,
+		styled_hobbies,
 		"",
 		TermColorDark,
 		TermColorLight,
@@ -101,15 +105,17 @@ var YuyuInfo = Information{
 		firstName:   "Hiroya",
 		lastName:    "Watanabe",
 		birthday:    time.Date(2000, 2, 24, 0, 0, 0, 0, time.Local),
-		affiliation: "Kyoto Institute of Technology",
+		almaMater:   "Kyoto Institute of Technology",
+		description: "PHP Programmer",
 	},
 	address: Address{
 		country: "Japan",
-		states:  "Kyoto",
+		states:  "Tokyo",
 	},
 	shell:       "Japanese",
 	Twitter:     "@Hyuyu_kun",
+	Bluesky:     "@hyuyukun.aquatan.net",
 	GitHub:      "Hiroya-W",
-	programming: []string{"Python", "C++", "Go"},
-	major:       []string{"Software Engineering"},
+	programming: []string{"PHP", "Python", "C++", "Go"},
+	hobbies:     []string{"FF14", "Touhou Project", "VOCALOID"},
 }
