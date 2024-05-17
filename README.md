@@ -2,7 +2,7 @@
 
 A command-line self-introduction tool.
 
-![image](https://user-images.githubusercontent.com/43127622/202208641-bae0179c-f681-4aff-bd52-f093feb5bcde.png)
+![image](https://github.com/Hiroya-W/yuyufetch/assets/43127622/f972fba5-3635-453f-afe6-8c52427d4ec7)
 
 Inspired by [Neofetch](https://github.com/dylanaraps/neofetch), [perufetch](https://github.com/TadaTeruki/perufetch).
 
